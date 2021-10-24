@@ -7,7 +7,6 @@ async function submitForm(event) {
         body: formData
     });
     const { labels } = await res.json();
-    console.log(labels)
     document.querySelector('#labels').innerHTML = labels
     let msg = new SpeechSynthesisUtterance();
     for (const label of labels) {
