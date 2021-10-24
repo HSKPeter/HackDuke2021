@@ -3,7 +3,7 @@ const express = require('express');
 // const multer = require('multer');
 // const { findImageLabels } = require('./findImageLabels');
 // const { isImage, isWordDoc, isTextFile } = require('./identifyFileTypes');
-// const path = require('path');
+const path = require('path');
 // const textract = require('textract');
 // const fs = require('fs');
 
