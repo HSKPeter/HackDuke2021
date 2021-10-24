@@ -15,3 +15,5 @@ export GOOGLE_APPLICATION_CREDENTIALS="./apiKey.json"
 ```bash
 node index.js
 ```
+
+4. Visit ```http://localhost:3000/``` in the browser
