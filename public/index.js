@@ -29,9 +29,13 @@ async function submitForm(event) {
     });    
     const { labels } = await res.json();
     statusSymbol.innerHTML = playing;
+    document.querySelector('#message').style.display = 'none'    
     for (const label of labels) {
+        document.querySelector('#wordsPronouncing').textContent = label
         await pronounce(label);
     }
+    document.querySelector('#wordsPronouncing').textContent = ''
+    document.querySelector('#message').style.display = '' 
     statusSymbol.innerHTML = '';
     document.querySelector('#uploadButton').disabled = false;
     return;
