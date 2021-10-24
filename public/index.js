@@ -1,4 +1,4 @@
-async function submitForm(event){
+async function submitForm(event) {
     event.preventDefault()
     const form = document.querySelector('#form')
     const formData = new FormData(form);
@@ -6,16 +6,25 @@ async function submitForm(event){
         method: "POST",
         body: formData
     });
-    const {labels} = await res.json();
+    const { labels } = await res.json();
     console.log(labels)
     document.querySelector('#labels').innerHTML = labels
-    const msg = new SpeechSynthesisUtterance();
+    let msg = new SpeechSynthesisUtterance();
     for (const label of labels) {
-        msg.text = label
-        window.speechSynthesis.speak(msg)
+        await pronounce(label)
     }
     return
 
 }
+
+async function pronounce(word) {
+    const audio = new SpeechSynthesisUtterance(word);
+    window.speechSynthesis.speak(audio);
+
+    return new Promise(resolve => {
+        audio.onend = resolve;
+    });
+}
+
 
 document.querySelector('#form').addEventListener('submit', submitForm)
