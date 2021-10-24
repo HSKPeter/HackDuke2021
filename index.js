@@ -8,8 +8,8 @@ const express = require('express');
 // const fs = require('fs');
 
 // // Initiate the express server
-// const app = express()
-// const port = 3000
+const app = express()
+const port = 3000
 
 // // Configure the multer storage
 // const storage = multer.diskStorage({
