@@ -51,8 +51,8 @@ app.post('/upload', (req, res) => {
       }
 
       // Display uploaded image for user validation
-      const labels = await findImageLabels(req.file.path)
-      // const labels = ['testing']
+      // const labels = await findImageLabels(req.file.path)
+      const labels = ['testing1', 'testing2']
       res.status(200).json({ labels })
       // res.send(`You have uploaded this image: <hr/><img src="${req.file.path}" width="500"><hr /><a href="./">Upload another image</a>`);
   });
