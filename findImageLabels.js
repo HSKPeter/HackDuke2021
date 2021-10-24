@@ -1,4 +1,4 @@
-async function findImageLabels() {
+async function findImageLabels(imagePath) {
     // Imports the Google Cloud client library
     const vision = require('@google-cloud/vision');
   
@@ -6,9 +6,8 @@ async function findImageLabels() {
     const client = new vision.ImageAnnotatorClient();
   
     // Performs label detection on the image file
-    const [result] = await client.labelDetection('./resources/wakeupcat.jpeg');
+    const [result] = await client.labelDetection(imagePath);
     const labels = result.labelAnnotations;
-    console.log('Labels:');
     const labelNames = [];
     labels.forEach(label => labelNames.push(label.description));
     return labelNames

@@ -5,3 +5,8 @@
 ```bash
 npm i
 ```
+
+2. Set the environment variable for Google API
+```
+export GOOGLE_APPLICATION_CREDENTIALS="./apiKey.json"
+```
