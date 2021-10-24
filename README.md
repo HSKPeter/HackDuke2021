@@ -1,8 +1,9 @@
 # Read For You
 
 ## Introduction
-* ***Read For You*** is a project developed within 24 hours in the hackathon HackDuke 2021 (23 Oct 2021 - 24 Oct 2021), that hopes to empower the visually impaired group by providing image description and text to speech services.
-* The project was hosted on *https://readforyou.tech/*, using the services from the Google Cloud Platform and domain.com
+* ***Read For You*** is a web application developed within 24 hours in the hackathon HackDuke 2021 (23 Oct 2021 - 24 Oct 2021).
+* ***Read For You*** hopes to empower the visually impaired group by providing image description and text to speech services.
+* This project is hosted on *https://readforyou.tech/*, using the services from the Google Cloud Platform and domain.com
 * When a user uploads an image, words describing the image will be read out and displayed on screen. When a user uploads a document file (txt, docx, doc) the text will be read out and the contents will be displayed on screen.
 
 ## Setup for Project Development
