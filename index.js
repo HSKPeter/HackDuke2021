@@ -1,8 +1,11 @@
 const express = require('express');
 const multer = require('multer');
-const path = require('path');
 const {findImageLabels} = require('./findImageLabels')
+const {isImage, isWordDoc, isTextFile} = require('./identifyFileTypes')
+const path = require('path');
 const textract = require('textract');
+const fs = require('fs')
+
 
 const app = express()
 const port = 3000
@@ -22,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const imageFilter = function(req, file, cb) {
   // Accept images only
-  if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|docx|DOCX|doc|DOCX)$/)) {
+  if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|docx|DOCX|doc|DOCX|txt|TXT)$/)) {
       req.fileValidationError = 'Only image files / .docx files are allowed!';
       return cb(new Error('Only image files / .docx files'), false);
   }
@@ -52,45 +55,29 @@ app.post('/upload', (req, res) => {
       }
 
       const filename = req.file.path
-      console.log(filename)
 
       if (isImage(filename)){
         const labels = await findImageLabels(req.file.path)
-        // const labels = ['testing1', 'testing2']
         res.status(200).json({ labels })
         return 
       }
 
       if (isWordDoc(filename)){
-        console.log(filename)
         textract.fromFileWithPath(filename, function( error, text ) {
           res.status(200).json({ labels: [text] })
         })        
         return
       }
 
-      // // Display uploaded image for user validation
-      // const labels = await findImageLabels(req.file.path)
-      // // const labels = ['testing1', 'testing2']
-      // res.status(200).json({ labels })
-      // res.send(`You have uploaded this image: <hr/><img src="${req.file.path}" width="500"><hr /><a href="./">Upload another image</a>`);
+
+      if (isTextFile(filename)){
+        const text = fs.readFileSync('test.txt', 'utf8');
+        res.status(200).json({ labels: [text] })    
+        return
+      }
+
   });
 });
-
-function isImage(filename){
-  const fileType = path.extname(filename).toLowerCase()
-  const isPNG = fileType === '.png'
-  const isJPG = fileType === '.jpg'
-  const isJPEG = fileType === '.png'
-  return isPNG || isJPG ||isJPEG
-}
-
-function isWordDoc(filename){
-  const fileType = path.extname(filename).toLowerCase()
-  const isDOC = fileType === '.doc'
-  const isDOCX = fileType === '.docx'
-  return isDOC || isDOCX
-}
 
 // app.post('/upload', async (req, res) => {
 //   res.status(200).json({ message: "success" })
