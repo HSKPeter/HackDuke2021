@@ -4,7 +4,7 @@ function isImage(filename) {
     const fileType = path.extname(filename).toLowerCase()
     const isPNG = fileType === '.png';
     const isJPG = fileType === '.jpg';
-    const isJPEG = fileType === '.png';
+    const isJPEG = fileType === '.jpeg';
     return isPNG || isJPG || isJPEG;
 }
 

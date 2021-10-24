@@ -1,26 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HackDuke 2021</title>
+    <meta charset="utf-8">
+    <title>Document</title>
+    <meta name="x" content="timer">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
-    <h1>
-        Hello World!
-    </h1>
-    <form method="POST" action="/upload" enctype="multipart/form-data" id="form">
-        <div>
-            <label>Select your profile picture:</label>
-            <input type="file" name="image" />
+    <nav class="navbar navbar-light bg-dark mb-4">
+        <div class="container py-2">
+            <a class="navbar-brand text-white">We read it for you</a>
         </div>
-        <div>
-            <input type="submit" value="Upload" />
+    </nav>
+    <form id="form">
+        <div class="container">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div id="dropZone" class="d-flex justify-content-center align-items-center">
+                    <div>
+                        <div class="mb-4">
+                            <span id="statusSymbol"></span>
+                            <button type="button" class="btn btn-secondary" id="uploadButton">
+                                <i class="bi bi-file-earmark-arrow-up-fill"></i>
+                                Upload File
+                            </button>
+                        </div>
+                        <div class="mb-5">
+                            <div>And we will read out the text /</div>
+                            <div>describe an image to you.</div>
+                        </div>
+                        <div id="dragAndDropSupplementaryDescription">
+                            File type:
+                            jpg / jpeg / png / txt / docx / doc
+                        </div>
+                        <input type="file" name="uploadFile" id="uploadFile" />
+                        <input type="submit" id="submitForm"/>
+                    </div>
+                </div>
+            </div>
         </div>
-    </form>    
-    <div id="labels"></div>
+    </form>
+
 
     <script src="index.js"></script>
+
 </body>
+
 </html>

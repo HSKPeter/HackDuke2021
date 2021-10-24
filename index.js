@@ -22,8 +22,7 @@ const storage = multer.diskStorage({
   }
 });
 
-const imageFilter = function (req, file, cb) {
-  // Accept images only
+const fileFilter = function (req, file, cb) {
   if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|docx|DOCX|doc|DOCX|txt|TXT)$/)) {
     const errorMessage = 'Only accept image files (.jpg / .jpeg / .png) / text files (.doc / .docx / .txt)';
     req.fileValidationError = errorMessage;
@@ -34,7 +33,7 @@ const imageFilter = function (req, file, cb) {
 
 // Handle post request to the route of '/upload'
 app.post('/upload', (req, res) => {
-  let upload = multer({ storage: storage, fileFilter: imageFilter }).single('image');
+  let upload = multer({ storage: storage, fileFilter: fileFilter }).single('uploadFile');
 
   upload(req, res, async function (err) {
     const errorMessageToClients = "Sorry. We only support image files and text files.";
