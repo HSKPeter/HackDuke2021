@@ -1,5 +1,2 @@
 .DS_Store
 node_modules
-resources/*.jpg
-resources/*.png
-resources/*.jpeg
