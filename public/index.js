@@ -1,18 +1,18 @@
 async function submitForm(event) {
-    event.preventDefault()
-    const form = document.querySelector('#form')
+    event.preventDefault();
+    const form = document.querySelector('#form');
     const formData = new FormData(form);
     const res = await fetch('/upload', {
         method: "POST",
         body: formData
     });
     const { labels } = await res.json();
-    document.querySelector('#labels').innerHTML = labels
+    document.querySelector('#labels').innerHTML = labels;
     let msg = new SpeechSynthesisUtterance();
     for (const label of labels) {
-        await pronounce(label)
+        await pronounce(label);
     }
-    return
+    return;
 
 }
 
@@ -26,4 +26,4 @@ async function pronounce(word) {
 }
 
 
-document.querySelector('#form').addEventListener('submit', submitForm)
+document.querySelector('#form').addEventListener('submit', submitForm);

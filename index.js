@@ -1,15 +1,17 @@
+// Import packages
 const express = require('express');
 const multer = require('multer');
-const {findImageLabels} = require('./findImageLabels')
-const {isImage, isWordDoc, isTextFile} = require('./identifyFileTypes')
+const {findImageLabels} = require('./findImageLabels');
+const {isImage, isWordDoc, isTextFile} = require('./identifyFileTypes');
 const path = require('path');
 const textract = require('textract');
-const fs = require('fs')
+const fs = require('fs');
 
-
+// Initiate the express server
 const app = express()
 const port = 3000
 
+// Configure the multer storage
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
       cb(null, 'files/');
@@ -21,18 +23,17 @@ const storage = multer.diskStorage({
   }
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
-
 const imageFilter = function(req, file, cb) {
   // Accept images only
   if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|docx|DOCX|doc|DOCX|txt|TXT)$/)) {
-      req.fileValidationError = 'Only image files / .docx files are allowed!';
-      return cb(new Error('Only image files / .docx files'), false);
+    const errorMessage = 'Only accept image files (.jpg / .jpeg / .png) / text files (.doc / .docx / .txt)';
+    req.fileValidationError = errorMessage;
+      return cb(new Error(errorMessage), false);
   }
   cb(null, true);
 };
 
-
+// Handle post request to the route of '/upload'
 app.post('/upload', (req, res) => {
   // 'profile_pic' is the name of our file input field in the HTML form
   let upload = multer({ storage: storage, fileFilter: imageFilter }).single('image');
@@ -79,9 +80,7 @@ app.post('/upload', (req, res) => {
   });
 });
 
-// app.post('/upload', async (req, res) => {
-//   res.status(200).json({ message: "success" })
-// })
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(port, () => {
   console.log(`Listening at PORT ${port}`)
