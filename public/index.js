@@ -21,6 +21,8 @@ async function submitForm(event) {
     event.preventDefault();
     document.querySelector('#uploadButton').disabled = true;
     statusSymbol.innerHTML = spinner;
+    document.querySelector('#wordsPronouncing').textContent = 'Loading ...';
+    document.querySelector('#message').style.display = 'none';
     const form = document.querySelector('#form');
     const formData = new FormData(form);
     const res = await fetch('/upload', {
@@ -28,8 +30,7 @@ async function submitForm(event) {
         body: formData
     });    
     const { labels } = await res.json();
-    statusSymbol.innerHTML = playing;
-    document.querySelector('#message').style.display = 'none'    
+    statusSymbol.innerHTML = playing;       
     for (const label of labels) {
         document.querySelector('#wordsPronouncing').textContent = label
         await pronounce(label);
