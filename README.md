@@ -11,7 +11,10 @@
 ```bash
 npm i
 ```
-2. Generate an API Key from the Google Cloud Platform and insert the API Key in ```apiKey.json``` for the Google Cloud Vision services
+2.  Setup the Google Cloud Vision services
+    * Generate an API Key from the Google Cloud Platform  
+    * Create a JSON file named ```apiKey.json``` 
+    * Insert the API Key in ```apiKey.json``` 
 
 3. Set the environment variable for Google API
 ```bash
