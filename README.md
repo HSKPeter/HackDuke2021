@@ -7,6 +7,13 @@
 * When a user uploads an image, words describing the image will be read out and displayed on screen. When a user uploads a document file (txt, docx, doc) the text will be read out and the contents will be displayed on screen.
 * (Click [here](https://docs.google.com/presentation/d/1WRcCWvhQonEmEPk43DZ1LMFHDcc7Pj009TAR4v32sUM/edit#slide=id.gd9d240c117_0_0) to learn more about this project)
 
+## Tech Stacks
+* HTML, CSS ,JavaScript
+* Express.js
+* Google Cloud Vision API
+* Google Cloud Platform
+* Nginx
+
 ## Setup for Project Development
 1. Install npm modules
 ```bash
@@ -28,9 +35,3 @@ node index.js
 ```
 
 5. Visit ```http://localhost:8080/``` in the browser
-
-## Tech Stacks
-* Express.js
-* Google Cloud Vision API
-* Google Cloud Platform
-* Nginx
