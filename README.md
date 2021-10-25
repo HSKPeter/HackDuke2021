@@ -5,7 +5,7 @@
 * ***Read For You*** aims to empower the visually impaired group by providing image description and text to speech services.
 * This project is hosted on *https://readforyou.tech/*, using the services from the Google Cloud Platform and domain.com
 * When a user uploads an image, words describing the image will be read out and displayed on screen. When a user uploads a document file (txt, docx, doc) the text will be read out and the contents will be displayed on screen.
-* (Click [here](https://docs.google.com/presentation/d/1WRcCWvhQonEmEPk43DZ1LMFHDcc7Pj009TAR4v32sUM/edit#slide=id.gd9d240c117_0_0) to learn more about this project)
+* (Click [here](https://devpost.com/software/read-for-you) to learn more about this project)
 
 ## Tech Stacks
 * HTML, CSS ,JavaScript
